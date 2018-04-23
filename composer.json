@@ -1,0 +1,16 @@
+{
+  "name": "php-app",
+  "license": "Apache-2.0",
+  "authors": [
+      {
+          "name": "Ali Ikram"      
+        }
+  ],
+  "require": {
+      "php": ">=5.5",
+      "aws/aws-sdk-php": "^3.2.6"
+  },
+  "require-dev": {
+      "phpunit/phpunit": "^4.8.35|^5.4.0|^6.0.0"
+  }
+}
