@@ -35,12 +35,11 @@ RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.p
 RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini
 RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini
 
-
-
-
 ADD src /var/www/
 WORKDIR /var/www/
 RUN /usr/local/bin/composer update
+
+ADD awsconfig /.aws/credentials
 
 EXPOSE 80
 CMD ["/usr/local/bin/run"]
