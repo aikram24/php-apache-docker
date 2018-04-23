@@ -36,13 +36,11 @@ RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/ph
 RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini
 
 
-ADD composer.json /php-composer/
-WORKDIR /php-composer/
-RUN /usr/local/bin/composer update
+
 
 ADD src /var/www/
 WORKDIR /var/www/
-
+RUN /usr/local/bin/composer update
 
 EXPOSE 80
 CMD ["/usr/local/bin/run"]
