@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: docker build -t php-app:latest .
-  deploy_test:
+  deploy:
     docker:
       - image: ../Dockerfile
     working_directory: ~/php-apache-docker
