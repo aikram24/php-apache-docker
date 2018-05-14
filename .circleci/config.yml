@@ -41,9 +41,3 @@ jobs:
           name: Run tests
           command: |
             docker run -itd -p 8080:80 app 
-      - deploy:
-          name: Push application Docker image
-          command: |
-              docker login --username ${username} --password ${password}
-              docker tag app php-app-docker:latest
-              docker push php-app-docker:latest
