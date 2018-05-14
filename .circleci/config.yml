@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ../Dockerfile
+    working_directory: ~/php-apache-docker
+    steps:
+      - checkout
+      - run: docker build -t php-app:latest .
+  deploy_test:
+    docker:
+      - image: ../Dockerfile
+    working_directory: ~/php-apache-docker
+    steps:
+      - setup_remote_docker
+      - run: docker run -it -p 8080:80 php-app:latest
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
