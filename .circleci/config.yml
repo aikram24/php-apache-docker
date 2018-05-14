@@ -1,15 +1,17 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: ../Dockerfile
+    machine:
+      enabled: true
+      image: ../Dockerfile
     working_directory: ~/php-apache-docker
     steps:
       - checkout
       - run: docker build -t php-app:latest .
   deploy:
-    docker:
-      - image: ../Dockerfile
+    machine:
+      enabled: true
+      image: ../Dockerfile
     working_directory: ~/php-apache-docker
     steps:
       - setup_remote_docker
