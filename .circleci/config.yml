@@ -41,7 +41,6 @@ jobs:
           name: Run tests
           command: |
             docker run -itd -p 8080:80 app 
-            wget localhost:8080
       - deploy:
           name: Push application Docker image
           command: |
